@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<div class="container-fluid">    
+<div style="padding:10%">
+    <h1>Update Record</h1>
+    <hr>
+<form method="post" action="{% url 'updateEvent'  updateId %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Submit</button>
+</form>
+</div>
+</div>
+{% endblock body %}

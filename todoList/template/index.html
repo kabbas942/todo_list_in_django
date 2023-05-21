@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+<div class="container-fluid">
+    <div style="padding:5%">
+<table class="table">
+    <thead>
+       <tr>
+          <th scope="col">Event Title</th>
+          <th scope="col">Created At</th>
+          <th scope="col">Completed At</th>
+          <th scope="col">Action</th>
+          <!-- Add more headers if needed -->
+       </tr>
+    </thead>
+    <tbody>
+      {% if todoList %}
+        
+      
+      {% for record in todoList %}
+         
+
+         
+       <tr>
+          <td>{{record.title}}</td>
+          <td>{{record.created_at}}</td>
+          <td>{{record.completed}}</td>
+          <td><button class="btn btn-warning btn-sm" onclick="submit('update','{{record.id}}')">Update</button>
+            <button class="btn btn-danger btn-sm" onclick="submit('delete','{{record.id}}')">Remove</button>
+        </td>
+          <!-- Add more data cells if needed -->
+       </tr>
+       {% endfor %}
+       {% else %}
+       <tr>
+         <td>Empty</td>
+         
+      </tr>
+       {% endif %}
+       <!-- Add more rows if needed -->
+    </tbody>
+ </table>
+    </div>
+    </div>
+{% endblock body %}
+
+{% block script %}
+<script>
+function submit(operation, id) {
+   if(operation == "update"){
+      location.href="/updateEvent/"+id;
+   }
+   else{
+      if (operation == "delete") {
+         location.href="/deleteEvent/"+id;
+      }
+
+
+   }
+}
+
+</script>
+{% endblock script %}
+   
+    
